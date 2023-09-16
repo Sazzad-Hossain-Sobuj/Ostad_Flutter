@@ -1,8 +1,6 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ostad_project_all/setting_screen.dart';
-
-import 'order_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,32 +9,54 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Nabigation"),
-        toolbarHeight: 100,
+        title: Text('My Shopping list',style: TextStyle(fontWeight: FontWeight.bold),),
+        centerTitle: true,
         backgroundColor: Colors.teal,
-        elevation: 20,
+        
+        actions: [
+          IconButton(onPressed: (){},
+              icon: Icon(Icons.shopping_cart),iconSize: 25,)],
       ),
-
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Home_Screen',style: TextStyle(fontSize: 40,fontWeight: FontWeight.bold)),
+            ListTile(
+              leading: Icon(Icons.shopping_basket,size: 30,color: Colors.teal,),
+              title: Text('Apples',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_basket,size: 30,color: Colors.teal,),
+              title: Text('Banana',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_basket,size: 30,color: Colors.teal,),
+              title: Text('Milk',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_basket,size: 30,color: Colors.teal,),
+              title: Text('Oil',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_basket,size: 30,color: Colors.teal,),
+              title: Text('Rice',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_basket,size: 30,color: Colors.teal,),
+              title: Text('Fish',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_basket,size: 30,color: Colors.teal,),
+              title: Text('Vegetables',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_basket,size: 30,color: Colors.teal,),
+              title: Text('Hen',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            ),
 
-            ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsScreen()),
-              );
-            },
-                child: Text('Go to settings')),
-
-            ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => OrderScreen()),
-              );
-            },
-                child: Text('Go to OrderScreen')),
           ],
         ),
-      ),
+      )
+
 
     );
   }
