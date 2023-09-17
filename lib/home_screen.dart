@@ -37,6 +37,29 @@ class HomeScreen extends StatelessWidget {
         child: Icon(Icons.add),
         onPressed: (){MySnackBar('hey! your shopping list is added', context);},
       ),
+      bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home),label: 'home'),
+            BottomNavigationBarItem(icon: Icon(Icons.message),label: 'contact'),
+            BottomNavigationBarItem(icon: Icon(Icons.person),label: 'profile'),
+          ],
+        onTap: (int index){
+            if(index == 0){
+              MySnackBar('this is home page', context);
+
+            }
+            if(index == 1){
+              MySnackBar('hey! here your contact', context);
+
+            }
+            if(index == 2){
+              MySnackBar('here is your profile', context);
+
+            }
+        }
+
+
+      ),
     );
   }
 }
