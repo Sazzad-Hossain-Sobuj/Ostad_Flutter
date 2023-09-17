@@ -1,14 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'home_screen.dart';
+import 'package:ostad_project_all/home_screen.dart';
 
 void main(){
-  runApp(Myapp());
-
+  runApp(MyApp());
 }
-class Myapp extends StatelessWidget {
-  const Myapp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +16,3 @@ class Myapp extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-

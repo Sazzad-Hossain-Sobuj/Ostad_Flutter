@@ -1,63 +1,36 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
+  
+ MySnackBar(msg,context){
+   return ScaffoldMessenger.of(context).showSnackBar(
+       SnackBar(content: Text(msg))
+       );
+ }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Shopping list',style: TextStyle(fontWeight: FontWeight.bold),),
-        centerTitle: true,
+        title: Text('SnackBar'),
+        titleSpacing: 50,
+        toolbarHeight: 60,
+        elevation: 40,
         backgroundColor: Colors.teal,
-        
+
         actions: [
-          IconButton(onPressed: (){},
-              icon: Icon(Icons.shopping_cart),iconSize: 25,)],
+          IconButton(onPressed: (){MySnackBar('this is shopping cart', context);},
+              icon: Icon(Icons.shopping_cart)),
+
+          IconButton(onPressed: (){MySnackBar('how was our product', context);},
+              icon: Icon(Icons.comment)),
+          
+          IconButton(onPressed: (){MySnackBar('here is our product list', context);},
+              icon: Icon(Icons.menu)),
+        ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            ListTile(
-              leading: Icon(Icons.shopping_basket,size: 30,color: Colors.teal,),
-              title: Text('Apples',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_basket,size: 30,color: Colors.teal,),
-              title: Text('Banana',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_basket,size: 30,color: Colors.teal,),
-              title: Text('Milk',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_basket,size: 30,color: Colors.teal,),
-              title: Text('Oil',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_basket,size: 30,color: Colors.teal,),
-              title: Text('Rice',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_basket,size: 30,color: Colors.teal,),
-              title: Text('Fish',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_basket,size: 30,color: Colors.teal,),
-              title: Text('Vegetables',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-            ),
-            ListTile(
-              leading: Icon(Icons.shopping_basket,size: 30,color: Colors.teal,),
-              title: Text('Hen',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-            ),
-
-          ],
-        ),
-      )
-
-
     );
   }
 }
