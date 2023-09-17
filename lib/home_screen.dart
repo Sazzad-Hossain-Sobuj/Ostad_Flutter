@@ -60,6 +60,69 @@ class HomeScreen extends StatelessWidget {
 
 
       ),
+
+      drawer: Drawer(
+      child: ListView(
+        children: [
+          DrawerHeader(
+              padding: EdgeInsets.all(0),
+              child: UserAccountsDrawerHeader(
+                decoration: BoxDecoration(color: Colors.teal,),
+
+                accountName: Text('Sazzad Hossain',style: TextStyle(fontWeight: FontWeight.bold),),
+                accountEmail: Text('sazzad123@gmail.com'),
+                currentAccountPicture: Image.network('https://avatars.githubusercontent.com/u/93114191?v=4'),
+
+              )
+          ),
+          ListTile(
+            leading: Icon(Icons.home,color: Colors.teal),
+            title: Text('Home'),
+            onTap: (){
+              MySnackBar('here is my home page', context);
+            },),
+          ListTile(leading: Icon(Icons.contact_phone,color: Colors.teal), title: Text('Contact')),
+          ListTile(leading: Icon(Icons.person,color: Colors.teal), title: Text('Profile')),
+          ListTile(leading: Icon(Icons.phone,color: Colors.teal), title: Text('Phone')),
+          ListTile(leading: Icon(Icons.email,color: Colors.teal), title: Text('Email')),
+
+
+        ],
+
+      ),
+
+    ),
+      endDrawer: Drawer(
+        child: ListView(
+          children: [
+            DrawerHeader(
+                padding: EdgeInsets.all(0),
+                child: UserAccountsDrawerHeader(
+                  decoration: BoxDecoration(color: Colors.teal,),
+
+                  accountName: Text('Sazzad Hossain',style: TextStyle(fontWeight: FontWeight.bold),),
+                  accountEmail: Text('sazzad123@gmail.com'),
+                  currentAccountPicture: Image.network('https://avatars.githubusercontent.com/u/93114191?v=4'),
+
+                )
+            ),
+            ListTile(
+              leading: Icon(Icons.home,color: Colors.teal),
+              title: Text('Home'),
+              onTap: (){
+                MySnackBar('here is my home page', context);
+              },),
+            ListTile(leading: Icon(Icons.contact_phone,color: Colors.teal), title: Text('Contact')),
+            ListTile(leading: Icon(Icons.person,color: Colors.teal), title: Text('Profile')),
+            ListTile(leading: Icon(Icons.phone,color: Colors.teal), title: Text('Phone')),
+            ListTile(leading: Icon(Icons.email,color: Colors.teal), title: Text('Email')),
+
+
+          ],
+
+        ),
+
+      ),
     );
   }
 }
