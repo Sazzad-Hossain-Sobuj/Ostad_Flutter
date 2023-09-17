@@ -12,6 +12,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+   // ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+   //   minimumSize: Size(double.infinity,30)
+   // );
     return Scaffold(
       appBar: AppBar(
         title: Text('SnackBar'),
@@ -123,6 +127,42 @@ class HomeScreen extends StatelessWidget {
         ),
 
       ),
+      
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Padding(padding: EdgeInsets.all(10),
+          child:  TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'First Name',
+              labelStyle: TextStyle(fontSize: 20),
+            ),),),
+          Padding(padding: EdgeInsets.all(10),
+            child:  TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Last Name',
+                labelStyle: TextStyle(fontSize: 20),
+              ),),),
+          Padding(padding: EdgeInsets.all(10),
+            child:  TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Email',
+                labelStyle: TextStyle(fontSize: 20),
+              ),),),
+          Padding(padding: EdgeInsets.all(10),
+            child: ElevatedButton(onPressed: (){},
+                child: Text('submit'),
+                style: ElevatedButton.styleFrom(minimumSize: Size(double.infinity, 40)),
+            ),
+          ),
+
+
+
+        ],
+      )
     );
   }
 }
