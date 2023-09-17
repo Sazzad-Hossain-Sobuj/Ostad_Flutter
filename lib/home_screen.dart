@@ -31,6 +31,12 @@ class HomeScreen extends StatelessWidget {
               icon: Icon(Icons.menu)),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.teal,
+        elevation: 20,
+        child: Icon(Icons.add),
+        onPressed: (){MySnackBar('hey! your shopping list is added', context);},
+      ),
     );
   }
 }
