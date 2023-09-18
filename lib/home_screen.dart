@@ -1,168 +1,141 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
-  
- MySnackBar(msg,context){
-   return ScaffoldMessenger.of(context).showSnackBar(
-       SnackBar(content: Text(msg))
-       );
- }
+  List<String> images = [
+    'https://img.freepik.com/free-vector/cute-boy-standing-position-showing-thumb_96037-450.jpg?w=2000',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAzqU-bAvdcR63d7nE4QXtYxRKHMd9Ak4Ax9gscSgJ-hs508Dw92vVB3VkAfhuN8RtQ8M&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu0W8oLEK6dzc-uO1I9H3Vx8Md5YRDA6nJuSR4gzLpV8M0mDsJftls0FzrmYAcEkATuRI&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt1uxUIUxxiPJ-xgtXZHTa2tGkHiCVrcEcxMSROq0xy2aOR2K3CWw_U-GnA-W5g0ENAmg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlVraMiU92hQ6JubV9EOU9VR7zoCbKgFkpHIttOLzzQv6StSnekLn3MjNYkgXxYBDfw7g&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWnNqeo6bD5SlwulnP3HWs6qbSvlfQ_Iggyta5e3BXef903Br5_5peIDpJPW_LPSaGxEk&usqp=CAU',
+  ];
 
   @override
   Widget build(BuildContext context) {
-
-   // ButtonStyle buttonStyle = ElevatedButton.styleFrom(
-   //   minimumSize: Size(double.infinity,30)
-   // );
     return Scaffold(
       appBar: AppBar(
-        title: Text('SnackBar'),
-        titleSpacing: 50,
+        title: Text('Photo of Gallery'),
+        centerTitle: true,
+        backgroundColor: Colors.teal,
         toolbarHeight: 60,
         elevation: 40,
-        backgroundColor: Colors.teal,
-
-        actions: [
-          IconButton(onPressed: (){MySnackBar('this is shopping cart', context);},
-              icon: Icon(Icons.shopping_cart)),
-
-          IconButton(onPressed: (){MySnackBar('how was our product', context);},
-              icon: Icon(Icons.comment)),
-          
-          IconButton(onPressed: (){MySnackBar('here is our product list', context);},
-              icon: Icon(Icons.menu)),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.teal,
-        elevation: 20,
-        child: Icon(Icons.add),
-        onPressed: (){MySnackBar('hey! your shopping list is added', context);},
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home),label: 'home'),
-            BottomNavigationBarItem(icon: Icon(Icons.message),label: 'contact'),
-            BottomNavigationBarItem(icon: Icon(Icons.person),label: 'profile'),
-          ],
-        onTap: (int index){
-            if(index == 0){
-              MySnackBar('this is home page', context);
-
-            }
-            if(index == 1){
-              MySnackBar('hey! here your contact', context);
-
-            }
-            if(index == 2){
-              MySnackBar('here is your profile', context);
-
-            }
-        }
-
-
       ),
 
-      drawer: Drawer(
-      child: ListView(
-        children: [
-          DrawerHeader(
-              padding: EdgeInsets.all(0),
-              child: UserAccountsDrawerHeader(
-                decoration: BoxDecoration(color: Colors.teal,),
-
-                accountName: Text('Sazzad Hossain',style: TextStyle(fontWeight: FontWeight.bold),),
-                accountEmail: Text('sazzad123@gmail.com'),
-                currentAccountPicture: Image.network('https://avatars.githubusercontent.com/u/93114191?v=4'),
-
-              )
-          ),
-          ListTile(
-            leading: Icon(Icons.home,color: Colors.teal),
-            title: Text('Home'),
-            onTap: (){
-              MySnackBar('here is my home page', context);
-            },),
-          ListTile(leading: Icon(Icons.contact_phone,color: Colors.teal), title: Text('Contact')),
-          ListTile(leading: Icon(Icons.person,color: Colors.teal), title: Text('Profile')),
-          ListTile(leading: Icon(Icons.phone,color: Colors.teal), title: Text('Phone')),
-          ListTile(leading: Icon(Icons.email,color: Colors.teal), title: Text('Email')),
-
-
-        ],
-
-      ),
-
-    ),
-      endDrawer: Drawer(
-        child: ListView(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            DrawerHeader(
-                padding: EdgeInsets.all(0),
-                child: UserAccountsDrawerHeader(
-                  decoration: BoxDecoration(color: Colors.teal,),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: Text('Welcome to My Photo Gallery!',
+                style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+            ),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child: TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Search for photos....',
+                  labelStyle: TextStyle(fontSize: 18),
+                ),
+              ),
+            ),
 
-                  accountName: Text('Sazzad Hossain',style: TextStyle(fontWeight: FontWeight.bold),),
-                  accountEmail: Text('sazzad123@gmail.com'),
-                  currentAccountPicture: Image.network('https://avatars.githubusercontent.com/u/93114191?v=4'),
+            Padding(
+              padding: EdgeInsets.all(16),
+              child:  Container(
+                child: GridView.builder(
+                  itemCount: images.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) {
+                    return GridTile(
+                      footer: Container(color: Colors.white,child: Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child: Center(child: Text("Photo $index",style: const TextStyle(fontSize: 20),)),
+                      ),),
+                      child: GestureDetector(
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Photo $index clicked!'),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          child: Image.network(
+                            images[index],
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
 
-                )
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+
+                ),
+              ),
+
+            ),
+
+
+            ListTile(
+              leading: CircleAvatar(
+                radius: 25.0,
+                backgroundImage: NetworkImage('https://img.freepik.com/free-vector/cute-boy-standing-position-showing-thumb_96037-450.jpg?w=2000'),
+              ),
+              title: Text('Cartoon 1',style: TextStyle(fontWeight: FontWeight.bold)),
+              subtitle: Text('why are you looking at me!'),
             ),
             ListTile(
-              leading: Icon(Icons.home,color: Colors.teal),
-              title: Text('Home'),
-              onTap: (){
-                MySnackBar('here is my home page', context);
-              },),
-            ListTile(leading: Icon(Icons.contact_phone,color: Colors.teal), title: Text('Contact')),
-            ListTile(leading: Icon(Icons.person,color: Colors.teal), title: Text('Profile')),
-            ListTile(leading: Icon(Icons.phone,color: Colors.teal), title: Text('Phone')),
-            ListTile(leading: Icon(Icons.email,color: Colors.teal), title: Text('Email')),
+              leading: CircleAvatar(
+                radius: 25.0,
+                backgroundImage: NetworkImage('https://i.pinimg.com/originals/03/19/8d/03198d4a991503b5f91351372bf6d3f3.jpg'),
+              ),
+              title: Text('Cartoon 2',style: TextStyle(fontWeight: FontWeight.bold)),
+              subtitle: Text('i want to sleep.let me sleep'),
+            ),
+            ListTile(
+              leading: CircleAvatar(
+                radius: 25.0,
+                backgroundImage: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgcwZW7vcQHzDs9WiLOn5z0Ex97g8Uggj_i_sZy5ENIb0YfRrE-M4KdocevtE93VB08g8&usqp=CAU'),
+              ),
+              title: Text('Cartoon 3',style: TextStyle(fontWeight: FontWeight.bold),),
+              subtitle: Text('she is laughing'),
+            ),
 
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                InkWell(
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Photos Uploaded Successfully!'),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.teal,
+                    ),
+                    child: Center(
+                      child: Icon(Icons.upload,color: Colors.white,size: 30),
+                    ),
+                  ),
+                ),
+              ],
+            ),
 
           ],
-
         ),
-
       ),
-      
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Padding(padding: EdgeInsets.all(10),
-          child:  TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'First Name',
-              labelStyle: TextStyle(fontSize: 20),
-            ),),),
-          Padding(padding: EdgeInsets.all(10),
-            child:  TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Last Name',
-                labelStyle: TextStyle(fontSize: 20),
-              ),),),
-          Padding(padding: EdgeInsets.all(10),
-            child:  TextField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Email',
-                labelStyle: TextStyle(fontSize: 20),
-              ),),),
-          Padding(padding: EdgeInsets.all(10),
-            child: ElevatedButton(onPressed: (){},
-                child: Text('submit'),
-                style: ElevatedButton.styleFrom(minimumSize: Size(double.infinity, 40)),
-            ),
-          ),
-
-
-
-        ],
-      )
     );
   }
 }
