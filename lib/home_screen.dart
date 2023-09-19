@@ -7,28 +7,72 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 8,
-        child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.teal,
-            title: Text('TabBar'),
-            bottom: TabBar(
-              isScrollable: true,
-                tabs: [
-                  Tab(icon: Icon(Icons.home), text: 'Home',),
-                  Tab(icon: Icon(Icons.no_accounts), text: 'Accounts'),
-                  Tab(icon: Icon(Icons.add_business), text: 'Business',),
-                  Tab(icon: Icon(Icons.bubble_chart), text: 'Bubble',),
-                  Tab(icon: Icon(Icons.shopping_cart), text: 'Shopping chart',),
-                  Tab(icon: Icon(Icons.shopping_basket), text: 'Shoppin busket',),
-                  Tab(icon: Icon(Icons.notifications), text: 'Notification',),
-                  Tab(icon: Icon(Icons.menu), text: 'Menu'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home Page'),
+        backgroundColor: Colors.teal,
+        toolbarHeight: 60,
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          ElevatedButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Page1()));
+          },
+              child: Text('Go Page1')),
 
-                ]
-            ),
-          ),
-        ),
+          ElevatedButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Page2()));
+          },
+              child: Text('Go Page2')),
+        ],
+      ),
+    );
+  }
+}
+
+
+class Page1 extends StatelessWidget {
+  const Page1({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Page1'),
+        backgroundColor: Colors.teal,
+        toolbarHeight: 60,
+      ),
+
+      body: Center(
+        child: ElevatedButton(onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Page2()));
+        },
+            child: Text('Go Page2')),
+      ),
+    );
+  }
+}
+
+
+class Page2 extends StatelessWidget {
+  const Page2({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Page2'),
+        backgroundColor: Colors.teal,
+        toolbarHeight: 60,
+      ),
+
+      body: Center(
+        child: ElevatedButton(onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Page1()));
+        },
+            child: Text('Go Page1')),
+      ),
     );
   }
 }
