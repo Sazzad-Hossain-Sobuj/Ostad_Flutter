@@ -9,70 +9,193 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: Text('Card'),
         backgroundColor: Colors.teal,
         toolbarHeight: 60,
+        centerTitle: true,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          ElevatedButton(onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Page1()));
-          },
-              child: Text('Go Page1')),
-
-          ElevatedButton(onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Page2()));
-          },
-              child: Text('Go Page2')),
-        ],
-      ),
-    );
-  }
-}
-
-
-class Page1 extends StatelessWidget {
-  const Page1({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Page1'),
-        backgroundColor: Colors.teal,
-        toolbarHeight: 60,
-      ),
-
       body: Center(
-        child: ElevatedButton(onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => Page2()));
-        },
-            child: Text('Go Page2')),
+        child: Column(
+          children: [
+            Card(
+              color: Colors.teal,
+              elevation: 20,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: SizedBox(
+                height: 80,
+                width: 100,
+                child: Center(
+                  child: Text('Hey! card1',style: TextStyle(color: Colors.white),),
+                ),
+            ),
+            ),
+            Card(
+              color: Colors.teal,
+              elevation: 20,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: SizedBox(
+                height: 80,
+                width: 100,
+                child: Center(
+                  child: Text('Hey! card2',style: TextStyle(color: Colors.white),),
+                ),
+              ),
+            ),
+            Wrap(
+              alignment: WrapAlignment.start,
+              spacing: 20,
+              runSpacing: 10,
+
+              children: [
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  elevation: 20,
+                  child: Container(
+                    height: 80,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      color: Colors.teal,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: Text('Hey! card3',style: TextStyle(color: Colors.white),),
+                    ),
+
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  elevation: 20,
+                  child: Container(
+                      height: 80,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.teal,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Text('Hey! card3',style: TextStyle(color: Colors.white),),
+                      )
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  elevation: 20,
+                  child: Container(
+                      height: 80,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.teal,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Text('Hey! card3',style: TextStyle(color: Colors.white),),
+                      )
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  elevation: 20,
+                  child: Container(
+                      height: 80,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.teal,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Text('Hey! card3',style: TextStyle(color: Colors.white),),
+                      )
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  elevation: 20,
+                  child: Container(
+                      height: 80,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.teal,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Text('Hey! card3',style: TextStyle(color: Colors.white),),
+                      )
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  elevation: 20,
+                  child: Container(
+                      height: 80,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.teal,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Text('Hey! card3',style: TextStyle(color: Colors.white),),
+                      )
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  elevation: 20,
+                  child: Container(
+                      height: 80,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.teal,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Text('Hey! card3',style: TextStyle(color: Colors.white),),
+                      )
+                  ),
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  elevation: 20,
+                  child: Container(
+                      height: 80,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.teal,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Text('Hey! card3',style: TextStyle(color: Colors.white),),
+                      )
+                  ),
+                ),
+              ],
+            )
+
+          ],
+        ),
       ),
+
     );
   }
 }
 
-
-class Page2 extends StatelessWidget {
-  const Page2({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Page2'),
-        backgroundColor: Colors.teal,
-        toolbarHeight: 60,
-      ),
-
-      body: Center(
-        child: ElevatedButton(onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => Page1()));
-        },
-            child: Text('Go Page1')),
-      ),
-    );
-  }
-}
