@@ -13,19 +13,25 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.teal,
         toolbarHeight: 60,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          ElevatedButton(onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Page1()));
-          },
-              child: Text('Go Page1')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
+                onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Page1('Hey! I am From HomePage to Page1')));
+            },
+                child: Text('Go Page1')),
 
-          ElevatedButton(onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Page2()));
-          },
-              child: Text('Go Page2')),
-        ],
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
+                onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Page2('Hey! I am From HomePage to Page2')));
+            },
+                child: Text('Go Page2')),
+          ],
+        ),
       ),
     );
   }
@@ -33,7 +39,8 @@ class HomeScreen extends StatelessWidget {
 
 
 class Page1 extends StatelessWidget {
-  const Page1({Key? key}) : super(key: key);
+  String msg1;
+  Page1(this.msg1, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +51,20 @@ class Page1 extends StatelessWidget {
         toolbarHeight: 60,
       ),
 
-      body: Center(
-        child: ElevatedButton(onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => Page2()));
-        },
-            child: Text('Go Page2')),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
+                onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Page2('Hey! I am From Page1 to Page2')));
+            },
+                child: Text('Go Page2')),
+          ),
+          SizedBox(height: 20),
+          Text(msg1),
+        ],
       ),
     );
   }
@@ -56,7 +72,8 @@ class Page1 extends StatelessWidget {
 
 
 class Page2 extends StatelessWidget {
-  const Page2({Key? key}) : super(key: key);
+  String msg2;
+  Page2(this.msg2, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -67,11 +84,20 @@ class Page2 extends StatelessWidget {
         toolbarHeight: 60,
       ),
 
-      body: Center(
-        child: ElevatedButton(onPressed: (){
-          Navigator.push(context, MaterialPageRoute(builder: (context) => Page1()));
-        },
-            child: Text('Go Page1')),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
+                onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Page1('Hey! I am From Page2 to Page1')));
+            },
+                child: Text('Go Page1')),
+          ),
+          SizedBox(height: 20),
+          Text(msg2),
+        ],
       ),
     );
   }
