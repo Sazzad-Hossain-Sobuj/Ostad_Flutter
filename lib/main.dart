@@ -1,61 +1,59 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:ostad_project_all/home_screen.dart';
 
 void main(){
   runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return CupertinoApp(
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
-      theme: ThemeData(
-        primaryColor: Colors.teal,
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.teal,
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(100),
-            ),
-            textStyle: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        textButtonTheme: TextButtonThemeData(
-          style: TextButton.styleFrom(
-            backgroundColor: Colors.teal,
-            foregroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-        ),
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.teal,
-          elevation: 30,
-          shadowColor: Colors.greenAccent,
-        ),
-        textTheme: TextTheme(
-          bodyMedium: TextStyle(
-            fontSize: 18,
-          ),
-          bodyLarge: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
-          ),
-          bodySmall: TextStyle(
-            fontSize: 12,
-            fontWeight: FontWeight.bold,
-          )
-        ),
-      ),
     );
   }
 }
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoPageScaffold(
+      navigationBar: CupertinoNavigationBar(
+        backgroundColor: Color.fromARGB(200,88, 254, 199),
+        middle: Text('Home'),
+        leading: Icon(CupertinoIcons.camera_rotate),
+        trailing: CupertinoSwitch(value: true,
+            onChanged: (bool onchange){}),
+      ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('CupertionApp'),
+              Text('CupertionApp'),
+              Text('CupertionApp'),
+              Text('CupertionApp'),
+              CupertinoButton(
+                  child: Text('button'),
+                  onPressed: (){}),
+              CupertinoButton.filled(
+                  child: Text('button'),
+                  onPressed: (){}),
+              SizedBox(height: 5,),
+              CupertinoTextField(),
+              CupertinoTabBar(
+                  items: [
+                    BottomNavigationBarItem( label: 'headphone', icon: Icon(CupertinoIcons.headphones)),
+                    BottomNavigationBarItem( label: 'headphone', icon: Icon(CupertinoIcons.square_favorites_alt_fill)),
+                    BottomNavigationBarItem( label: 'headphone', icon: Icon(CupertinoIcons.location)),
+                  ]),
+            ],
+          ),
+        ));
+  }
+}
+
