@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,189 +8,33 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Card'),
-        backgroundColor: Colors.teal,
+        title: Text('Theme and ThemeData'),
+        titleSpacing: 50,
         toolbarHeight: 60,
-        centerTitle: true,
+        elevation: 40,
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Card(
-              color: Colors.teal,
-              elevation: 20,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: SizedBox(
-                height: 80,
-                width: 100,
-                child: Center(
-                  child: Text('Hey! card1',style: TextStyle(color: Colors.white),),
-                ),
-            ),
-            ),
-            Card(
-              color: Colors.teal,
-              elevation: 20,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: SizedBox(
-                height: 80,
-                width: 100,
-                child: Center(
-                  child: Text('Hey! card2',style: TextStyle(color: Colors.white),),
-                ),
+            Text('Hello! Sazzad'),
+            Text('Hello! Sazzad',style: Theme.of(context).textTheme.bodySmall,),
+            Text('Hello! Sazzad'),
+            SizedBox(height: 10),
+            TextButton(onPressed: (){},
+                child: Text('TextButton')),
+            SizedBox(height: 10),
+            ElevatedButton(onPressed: (){},
+                child: Text('ElevatedButton1')),
+            SizedBox(height: 5),
+            ElevatedButton(onPressed: (){},
+                child: Text('ElevatedButton2'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.pink,
               ),
             ),
-            Wrap(
-              alignment: WrapAlignment.start,
-              spacing: 20,
-              runSpacing: 10,
-
-              children: [
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  elevation: 20,
-                  child: Container(
-                    height: 80,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      color: Colors.teal,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Text('Hey! card3',style: TextStyle(color: Colors.white),),
-                    ),
-
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  elevation: 20,
-                  child: Container(
-                      height: 80,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.teal,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Text('Hey! card3',style: TextStyle(color: Colors.white),),
-                      )
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  elevation: 20,
-                  child: Container(
-                      height: 80,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.teal,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Text('Hey! card3',style: TextStyle(color: Colors.white),),
-                      )
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  elevation: 20,
-                  child: Container(
-                      height: 80,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.teal,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Text('Hey! card3',style: TextStyle(color: Colors.white),),
-                      )
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  elevation: 20,
-                  child: Container(
-                      height: 80,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.teal,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Text('Hey! card3',style: TextStyle(color: Colors.white),),
-                      )
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  elevation: 20,
-                  child: Container(
-                      height: 80,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.teal,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Text('Hey! card3',style: TextStyle(color: Colors.white),),
-                      )
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  elevation: 20,
-                  child: Container(
-                      height: 80,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.teal,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Text('Hey! card3',style: TextStyle(color: Colors.white),),
-                      )
-                  ),
-                ),
-                Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  elevation: 20,
-                  child: Container(
-                      height: 80,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.teal,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Text('Hey! card3',style: TextStyle(color: Colors.white),),
-                      )
-                  ),
-                ),
-              ],
-            )
-
           ],
+
         ),
       ),
 
