@@ -1,72 +1,79 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ostad_project_all/style.dart';
 
-class SumApp extends StatefulWidget {
-  const SumApp({Key? key}) : super(key: key);
+class CounterApp extends StatefulWidget {
+  const CounterApp({Key? key}) : super(key: key);
 
   @override
-  State<SumApp> createState() => _SumAppState();
+  State<CounterApp> createState() => _CounterAppState();
 }
 
-class _SumAppState extends State<SumApp> {
+class _CounterAppState extends State<CounterApp> {
 
-  Map<String, double> FormValues = {
-    'num1': 0,
-    'num2': 0,
-};
-
-  
-  MyInputOnChange(InputKey, InputValue){
-    FormValues.update(InputKey, (value) => double.parse(InputValue));
-    setState(() {
-
-    });
-  }
-
-  double SUM = 0;
-  AddAllNumber(){
-    setState(() {
-
-    });
-    SUM = FormValues['num1']!+FormValues['num2']!;
-}
-
+  int count = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
-        title: Text('SumApp'),
-        centerTitle: true,
+        title: Text('Counter App'),
+        backgroundColor: Colors.lightBlue,
       ),
-
-      body: Padding(
-          padding: EdgeInsets.all(20),
+      
+      body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(SUM.toString(),style: HeadStyle(),),
+            Text('Count:',style: TextStyle(fontSize: 20),),
+            SizedBox(height: 5,),
+            Text(count.toString(),style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
             SizedBox(height: 10),
-            TextFormField(onChanged: (value){
-              MyInputOnChange('num1', value);
-            }, decoration: AppStyle('First Number')),
-            SizedBox(height: 10),
-            TextFormField(onChanged: (value){MyInputOnChange('num2', value);},decoration: AppStyle('Second Number'),),
-            SizedBox(height: 10),
-            Container(
-              child: ElevatedButton(
-                style: AddButton(),
-                  onPressed: (){
-                  AddAllNumber();
-                  },
-                  child: Text('Add')),
-            )
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  child: ElevatedButton(
 
+                      onPressed: (){
+                        count+=1;
+                        setState(() {
+
+                        });
+                        if (count>=5){
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context){
+                                return AlertDialog(
+                                  title: Text('Button pressed $count times'),
+                                  actions: [
+                                    TextButton(
+                                        onPressed: (){
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: Text('close'))
+                                  ],
+                                );
+                              });
+                        }
+                      },
+                      child: Text('+',style: TextStyle(fontSize: 30),)),
+                ),
+                SizedBox(width: 10,),
+                Container(
+                  child: ElevatedButton(
+                      onPressed: (){
+                        if(count>0){
+                          count-=1;
+                        }
+                        setState(() {
+                          
+                        });
+                      },
+                      child: Text('-',style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),)),
+                ),
+              ],
+            )
           ],
         ),
       ),
-
-
     );
   }
 }
