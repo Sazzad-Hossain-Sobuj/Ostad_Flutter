@@ -2,146 +2,77 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ProductList extends StatefulWidget {
-  @override
-  _ProductListState createState() => _ProductListState();
-}
+class NewsFeed extends StatelessWidget {
+  final List<String> Images = [
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
+    "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
 
-class _ProductListState extends State<ProductList> {
-  List<Product> products = [
-    Product(name: 'Product 1', price: 100),
-    Product(name: 'Product 2', price: 150),
-    Product(name: 'Product 3', price: 200),
-    Product(name: 'Product 4', price: 100),
-    Product(name: 'Product 5', price: 250),
-    Product(name: 'Product 6', price: 150),
-    Product(name: 'Product 7', price: 300),
-    Product(name: 'Product 8', price: 320),
-    Product(name: 'Product 9', price: 50),
-    Product(name: 'Product 10', price: 500),
+    // Add more image URLs here
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Product List'),
+        backgroundColor: Colors.pink,
+        title: Text('News Feed'),
       ),
-
-
-      body: ListView.builder(
-        itemCount: products.length,
-        itemBuilder: (context, index) {
-          return ProductItem(
-            product: products[index],
-            onBuyPressed: () {
-              setState(() {
-                products[index].buy();
-                if (products[index].count == 5) {
-                  _showCongratulationsDialog(products[index].name);
-                }
-              });
-            },
-          );
+      body: OrientationBuilder(
+        builder: (context, orientation) {
+          return (orientation == Orientation.portrait)
+              ? buildImageList()
+              : buildImageGrid();
         },
-
       ),
-      floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.teal,
-          child: Icon(Icons.shopping_cart),
-          onPressed: (){
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => CartPage(products: products),
-              ),
-            );
-
-          }),
     );
   }
 
-  Future<void> _showCongratulationsDialog(String productName) async {
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Congratulations!'),
-          content: Text('You\'ve bought 5 $productName!'),
-          actions: <Widget>[
-            TextButton(
-              child: Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
+  Widget buildImageList() {
+    return ListView.builder(
+      itemCount: Images.length,
+      itemBuilder: (context, index) {
+        return Card(
+          child: Container(
+            padding: EdgeInsets.only(left: 70,top: 5,right: 70, bottom: 5),
+            child: Image.network(
+              Images[index],
+              width: 150,
+              height: 150,
+              fit: BoxFit.cover,
             ),
-          ],
+          ),
         );
       },
     );
   }
-}
 
-class Product {
-  final String name;
-  final double price;
-  int count = 0;
-
-  Product({required this.name, required this.price});
-
-  void buy() {
-    count++;
-  }
-}
-
-class ProductItem extends StatelessWidget {
-  final Product product;
-  final VoidCallback onBuyPressed;
-
-  ProductItem({required this.product, required this.onBuyPressed});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(product.name),
-      subtitle: Text('Price: \$${product.price.toStringAsFixed(2)}'),
-      trailing: SingleChildScrollView(
-        child: Column(
-          children: [
-            Text('Count: ${product.count}'),
-            ElevatedButton(
-              onPressed: onBuyPressed,
-              child: Text('Buy Now'),
+  Widget buildImageGrid() {
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3,
+      ),
+      itemCount: Images.length,
+      itemBuilder: (context, index) {
+        return Card(
+          child: Container(
+            padding: EdgeInsets.all(10),
+            child: Image.network(
+              Images[index],
+              width: 150,
+              height: 150,
+              fit: BoxFit.cover,
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CartPage extends StatelessWidget {
-  final List<Product> products;
-
-  CartPage({required this.products});
-
-  int getTotalCount() {
-    int totalCount = 0;
-    for (var product in products) {
-      totalCount += product.count;
-    }
-    return totalCount;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Cart'),
-      ),
-      body: Center(
-        child: Text('Total Products ${getTotalCount()}'),
-      ),
+          ),
+        );
+      },
     );
   }
 }
